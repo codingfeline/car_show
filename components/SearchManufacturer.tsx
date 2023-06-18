@@ -13,7 +13,7 @@ const SearchManufacturer = ({ manufacturer, setManuFacturer }: SearchManuFacture
       ? manufacturers
       : manufacturers.filter(item =>
           item.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-        )
+        ) // /\s+/g, "" = repace space with '', \s = space, g = global
 
   return (
     <div className="search-manufacturer">
@@ -34,11 +34,11 @@ const SearchManufacturer = ({ manufacturer, setManuFacturer }: SearchManuFacture
 
           {/* Transition for displaying the options */}
           <Transition
-            as={Fragment} // group multiple elements without introducing an additional DOM node i.e., <></>
+            as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            afterLeave={() => setQuery('')} // Reset the search query after the transition completes
+            afterLeave={() => setQuery('')}
           >
             <Combobox.Options
               className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
